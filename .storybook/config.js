@@ -11,12 +11,12 @@ function getLink(href, text) {
   return `<a href=${href} rel="noopener noreferrer" target="_blank">${text}</a>`;
 }
 
-const README = getLink('https://github.com/xxd3vin/airbnb-npm-boilerplate/blob/master/README.md', 'README');
-const wrapperSource = getLink('https://github.com/xxd3vin/airbnb-npm-boilerplate/tree/master/examples', 'wrapper source');
+const README = getLink('https://github.com/yyssc/validate-float-input/blob/master/README.md', 'README');
+const wrapperSource = getLink('https://github.com/yyssc/validate-float-input/tree/master/examples', 'wrapper source');
 
 const helperText = `All examples are built using a wrapper component that is not exported by
-  airbnb-npm-boilerplate. Please see the ${README} for more information about minimal setup or explore
-  the ${wrapperSource} to see how to integrate airbnb-npm-boilerplate into your own app.`;
+  validate-float-input. Please see the ${README} for more information about minimal setup or explore
+  the ${wrapperSource} to see how to integrate validate-float-input into your own app.`;
 
 addDecorator(story => (
   <div>
@@ -42,12 +42,13 @@ addDecorator(story => (
 ));
 
 setOptions({
-  name: 'AIRBNB-NPM-BOILERPLATE',
-  url: 'https://github.com/xxd3vin/airbnb-npm-boilerplate',
+  name: 'VALIDATE-FLOAT-INPUT',
+  url: 'https://github.com/yyssc/validate-float-input',
 });
 
 function loadStories() {
   require('../stories/HelloWorld');
+  require('../stories/ValidateFloatInput');
 }
 
 setAddon(infoAddon);

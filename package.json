@@ -1,6 +1,6 @@
 {
-  "name": "airbnb-npm-boilerplate",
-  "version": "0.1.0",
+  "name": "validate-float-input",
+  "version": "0.0.0",
   "description": "A responsive and accessible component built with React",
   "main": "index.js",
   "scripts": {
@@ -34,18 +34,19 @@
     "prepublish": "in-publish && safe-publish-latest && npm run build || not-in-publish",
     "postpublish": "npm run gh-pages",
     "check-changelog": "expr $(git status --porcelain 2>/dev/null| grep \"^\\s*M.*CHANGELOG.md\" | wc -l) >/dev/null || (echo 'Please edit CHANGELOG.md' && exit 1)",
-    "check-only-changelog-changed": "(expr $(git status --porcelain 2>/dev/null| grep -v \"CHANGELOG.md\" | wc -l) >/dev/null && echo 'Only CHANGELOG.md may have uncommitted changes' && exit 1) || exit 0"
+    "check-only-changelog-changed": "(expr $(git status --porcelain 2>/dev/null| grep -v \"CHANGELOG.md\" | wc -l) >/dev/null && echo 'Only CHANGELOG.md may have uncommitted changes' && exit 1) || exit 0",
+    "install:taobao": "npm i --registry=https://registry.npm.taobao.org"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xxd3vin/airbnb-npm-boilerplate.git"
+    "url": "git+https://github.com/yyssc/validate-float-input.git"
   },
   "author": "Devin Chen <d3vin.chen@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/xxd3vin/airbnb-npm-boilerplate/issues"
+    "url": "https://github.com/yyssc/validate-float-input/issues"
   },
-  "homepage": "https://github.com/xxd3vin/airbnb-npm-boilerplate#readme",
+  "homepage": "https://github.com/yyssc/validate-float-input#readme",
   "devDependencies": {
     "@kadira/react-storybook-addon-info": "^3.3.0",
     "@kadira/storybook": "^2.35.3",
@@ -86,6 +87,7 @@
     "react": "^15.5.4",
     "react-addons-shallow-compare": "^15.5.2",
     "react-addons-test-utils": "^15.5.1",
+    "react-bootstrap": "^0.31.2",
     "react-dom": "^15.5.4",
     "react-svg-loader": "^1.1.1",
     "react-test-renderer": "^15.5.4",
@@ -104,8 +106,9 @@
   },
   "peerDependencies": {
     "react": ">=0.14",
-    "react-dom": ">=0.14",
-    "react-addons-shallow-compare": ">=0.14"
+    "react-addons-shallow-compare": ">=0.14",
+    "react-bootstrap": ">=0.31.0",
+    "react-dom": ">=0.14"
   },
   "greenkeeper": {
     "ignore": [
