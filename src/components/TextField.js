@@ -1,3 +1,5 @@
+/* eslint-disable max-len, react/require-default-props, comma-dangle, react/jsx-filename-extension */
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 

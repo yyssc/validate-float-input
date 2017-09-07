@@ -1,4 +1,4 @@
-/* eslint-disable no-var, curly, vars-on-top, func-names, one-var, no-unused-vars, guard-for-in */
+/* eslint-disable no-var, curly, vars-on-top, func-names, one-var, no-unused-vars, guard-for-in, max-len, no-restricted-properties, space-in-parens, prefer-template, space-before-function-paren, no-plusplus, no-array-constructor, no-param-reassign, one-var-declaration-per-line, new-parens, comma-dangle, no-prototype-builtins, operator-assignment, no-restricted-syntax, prefer-rest-params, arrow-body-style, object-curly-spacing */
 
 var enumerables = true;
 var enumerablesTest = {toString: 1};

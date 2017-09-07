@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import React from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
 import { forbidExtraProps } from 'airbnb-prop-types';

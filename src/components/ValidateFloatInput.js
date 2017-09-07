@@ -1,4 +1,4 @@
-/* eslint-disable no-var, curly, vars-on-top, func-names, one-var, no-unused-vars, guard-for-in */
+/* eslint-disable no-var, curly, vars-on-top, func-names, one-var, no-unused-vars, guard-for-in, max-len, no-console, react/require-default-props, react/no-unused-prop-types, operator-assignment, prefer-template, one-var-declaration-per-line, consistent-return, class-methods-use-this, comma-dangle, no-underscore-dangle, space-in-parens, arrow-parens, no-return-assign, react/jsx-filename-extension, prefer-const */
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -18,6 +18,12 @@ import u from '../u.biz';
  */
 
 import TextField from './TextField';
+
+function log(...arg) {
+  if (process.env.NODE_ENV === 'development') {
+    console.log(...arg);
+  }
+}
 
 // // Support: Android<4.1, IE<9
 // // Make sure we trim BOM and NBSP
@@ -181,7 +187,7 @@ export default class ValidateFloatInput extends Component {
     this.setState({
       needClean: false
     });
-		// if (this.$element.attr("readonly")) return true
+    // if (this.$element.attr("readonly")) return true
     var value = null;
     if (typeof pValue !== 'undefined') {
       value = pValue;
@@ -235,17 +241,29 @@ export default class ValidateFloatInput extends Component {
   }
 
   handleBlur(event) {
+    log('onBlur event');
+    const { value } = event.target;
     if (!this.doValid(event.target.value) && this._needClean()) {
+      log('没有校验通过');
       if (this.props.required && (event.target.value === null || event.target.value === undefined || event.target.value === '')) {
         // 因必输项清空导致检验没通过的情况
+        log('是必填项，并且文本框内容为空');
         this.setValue('');
       } else {
+        log('不是必填项，或者文本框内容非空');
         this.setState({
           showValue: this.state.showValue
         });
       }
     } else {
-      this.setValue(event.target.value);
+      log('校验通过');
+      if (value === '') {
+        log('文本框为空');
+        this.setValue('0.00');
+      } else {
+        log('文本框非空');
+        this.setValue(event.target.value);
+      }
     }
 
     if (this.props.onBlur) {
