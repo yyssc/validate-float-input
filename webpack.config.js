@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const webpack = require('webpack');
 
 const srcFolder = path.join(__dirname, 'src', 'components');
 const components = fs.readdirSync(srcFolder);
@@ -54,6 +55,13 @@ module.exports = {
       { test: /\.svg$/, loader: 'babel!react-svg', include: path.join(__dirname, 'src') },
     ],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      "process.env": { 
+           NODE_ENV: JSON.stringify("production") 
+         }
+    })
+  ],
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
