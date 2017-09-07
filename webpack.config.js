@@ -9,6 +9,7 @@ const files = [];
 const entries = {};
 components.forEach(component => {
   const name = component.split('.')[0];
+  if (name === '') return; // #4 ignore vim swap file like `.foo.js.swp`
   const file = `./src/components/${name}`;
   files.push(file);
   entries[name] = file;
