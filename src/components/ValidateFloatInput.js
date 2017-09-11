@@ -66,10 +66,12 @@ const propTypes = {
   nullMsg: PropTypes.string,
   /**
    * 当光标离开输入框
+   * onBlur => number, 返回经过组件自动校验后，并parseFloat之后的数值类型结果
    */
   onBlur: PropTypes.func,
   /**
    * 当文本框内容被修改时候调用
+   * onChange => string, 返回文本框当前值（没有经过组件的自动校验处理）
    */
   onChange: PropTypes.func,
   /**
@@ -139,7 +141,13 @@ export default class ValidateFloatInput extends Component {
     }
   }
 
-  setValue(val) {
+  /**
+   * 设置显示值和真实值，并调用回调（因为setState是异步的）
+   * @param {any} val
+   * @param {Function} callback
+   * @memberof ValidateFloatInput
+   */
+  setValue(val, callback) {
     const value = parseFloat(val);
     // this.maskerMeta.precision = this.dataModel.getRowMeta(this.field, 'precision') || this.maskerMeta.precision;
     // this.formater.precision = this.maskerMeta.precision;
@@ -151,12 +159,16 @@ export default class ValidateFloatInput extends Component {
     if (value === mvalue) {
       this.setState({
         showValue: this.masker.format(this.state.trueValue).value
+      }, () => {
+        if (callback) callback();
       });
     } else {
       const trueValue = this.formater.format(value);
       this.setState({
         trueValue,
         showValue: this.masker.format(trueValue).value,
+      }, () => {
+        if (callback) callback();
       });
     }
   }
@@ -243,12 +255,19 @@ export default class ValidateFloatInput extends Component {
   handleBlur(event) {
     log('onBlur event');
     const { value } = event.target;
+
+    const callback = () => {
+      if (this.props.onBlur) {
+        this.props.onBlur(parseFloat(this.state.trueValue));
+      }
+    };
+
     if (!this.doValid(event.target.value) && this._needClean()) {
       log('没有校验通过');
       if (this.props.required && (event.target.value === null || event.target.value === undefined || event.target.value === '')) {
         // 因必输项清空导致检验没通过的情况
         log('是必填项，并且文本框内容为空');
-        this.setValue('');
+        this.setValue('', callback);
       } else {
         log('不是必填项，或者文本框内容非空');
         this.setState({
@@ -259,15 +278,11 @@ export default class ValidateFloatInput extends Component {
       log('校验通过');
       if (value === '') {
         log('文本框为空');
-        this.setValue('0.00');
+        this.setValue('0.00', callback);
       } else {
         log('文本框非空');
-        this.setValue(event.target.value);
+        this.setValue(event.target.value, callback);
       }
-    }
-
-    if (this.props.onBlur) {
-      this.props.onBlur(event);
     }
   }
 
