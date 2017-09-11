@@ -13,4 +13,27 @@ storiesOf('ValidateFloatInput', module)
       onChange={action('onChange')}
       onBlur={action('onBlur')}
     />
-  ));
+  ))
+  .addWithInfo('show error', () => {
+    let vfiRef = null;
+    return (
+      <div>
+        <ValidateFloatInput
+          ref={(c) => { vfiRef = c; }}
+          onChange={action('onChange')}
+          onBlur={action('onBlur')}
+        />
+        <button
+          onClick={() => {
+            vfiRef.showMsg('foo');
+          }}
+        >show error</button>
+        <button
+          onClick={() => {
+            vfiRef.hideMsg();
+          }}
+        >hide error</button>
+
+      </div>
+    );
+  });
