@@ -1,5 +1,9 @@
 # Change Log
 
+## master
+
+- [fix] 修复同时存在`value`和`onChange`的时候导致数值被覆盖的问题
+
 ## v0.2.0
 
 - [new] `onBlur`时候返回经过组件内校验的数值型结果 ([#6](https://github.com/yyssc/validate-float-input/issues/6))

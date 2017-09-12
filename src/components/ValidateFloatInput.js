@@ -136,7 +136,11 @@ export default class ValidateFloatInput extends Component {
    */
   componentWillReceiveProps(nextProps) {
     // 只有当值改变的情况下才会更新状态
-    if (nextProps.value !== this.state.showValue) {
+    console.log('nextProps.value', nextProps.value);
+    console.log('this.props.value', this.props.value);
+    console.log('this.state.showValue', this.state.showValue);
+    console.log('this.state.trueValue', this.state.trueValue);
+    if (nextProps.value !== this.props.value) {
       this.setValue(nextProps.value);
     }
   }
