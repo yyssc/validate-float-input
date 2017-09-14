@@ -1,5 +1,9 @@
 # Change Log
 
+## master
+
+- [fix] 解决`doValid()`返回`false`的问题
+
 ## v0.2.1
 
 - [fix] 修复同时存在`value`和`onChange`的时候导致数值被覆盖的问题

@@ -208,7 +208,7 @@ export default class ValidateFloatInput extends Component {
     if (typeof pValue !== 'undefined') {
       value = pValue;
     } else {
-      value = this.state.showValue;
+      value = this.state.trueValue;
     }
 
     if (isEmpty(value) && this.props.required) {

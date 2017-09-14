@@ -65,4 +65,22 @@ storiesOf('ValidateFloatInput', module)
 
       </div>
     );
+  })
+  .addWithInfo('ref.doValid()', () => {
+    let vfiRef = null;
+    return (
+      <div>
+        <ValidateFloatInput
+          ref={(c) => { vfiRef = c; }}
+          onChange={action('onChange')}
+          onBlur={action('onBlur')}
+        />
+        <button
+          onClick={() => {
+            alert(vfiRef.doValid());
+          }}
+        >ref.doValid()</button>
+
+      </div>
+    );
   });
