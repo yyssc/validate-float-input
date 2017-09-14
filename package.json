@@ -1,6 +1,6 @@
 {
   "name": "validate-float-input",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A responsive and accessible component built with React",
   "main": "index.js",
   "scripts": {

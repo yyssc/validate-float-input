@@ -1,6 +1,6 @@
 # Change Log
 
-## master
+## v0.2.2
 
 - [fix] 解决`doValid()`返回`false`的问题
 
