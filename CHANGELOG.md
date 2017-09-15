@@ -1,6 +1,6 @@
 # Change Log
 
-## master
+## v0.3.0
 
 - [new] `onBlur()`返回event对象
 
