@@ -1,5 +1,9 @@
 # Change Log
 
+## master
+
+- [new] `onBlur()`返回event对象
+
 ## v0.2.2
 
 - [fix] 解决`doValid()`返回`false`的问题

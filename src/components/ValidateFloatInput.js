@@ -262,7 +262,7 @@ export default class ValidateFloatInput extends Component {
 
     const callback = () => {
       if (this.props.onBlur) {
-        this.props.onBlur(parseFloat(this.state.trueValue));
+        this.props.onBlur(parseFloat(this.state.trueValue), event);
       }
     };
 
